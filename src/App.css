@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+
+.smallText {
+  font-size: 2em;
+}
+
+.tiny {
+  width: 200px;
+}
+
+h2 {
+  font-size: 1.5em!important;
+  color: #454545;
+}
+
+h4 {
+  font-size: 1.2em!important;
+  color: #454545;
+}
+
+.display2 {
+  width: 50%!important;
+  margin: auto;
+  color: #929292;
+}
+
+.form-check-input {
+  margin-top: -3px!important;
+  margin-right: 10px!important;
+  width: 30px!important;
+  height: 30px!important;
+  /* background-color: rgb(0, 187, 125)!important; */
+}
+
+.form-check-input:checked {
+  background-color: rgb(0, 187, 125)!important;
+}
+
+.removeMargin {
+  margin-left: -100%;
+}
+
+.padding20 {
+  padding-left: 10%;
+  padding-right: 10%;
+}
