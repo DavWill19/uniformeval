@@ -2,47 +2,16 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .smallText {
   font-size: 2em;
 }
 
 .tiny {
   width: 200px;
+}
+
+.smallest {
+  width: 100px;
 }
 
 h2 {
@@ -54,7 +23,10 @@ h4 {
   font-size: 1.2em!important;
   color: #454545;
 }
-
+h6 {
+  font-size: 1em!important;
+  color: #727272;
+}
 .display2 {
   width: 50%!important;
   margin: auto;
@@ -80,4 +52,32 @@ h4 {
 .padding20 {
   padding-left: 10%;
   padding-right: 10%;
+}
+
+.modalImage {
+  width: 100%;
+  height: auto;
+}
+/* toast containter position absolute so it shows when scrolled down */
+.toast-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  z-index: 9999;
+}
+
+.cardContainer {
+    position: sticky!important;
+    top: 5%;
+    margin-top: 20px;
+    z-index: 9999;
+}
+
+.card {
+  box-shadow: 0 0 2px #606266!important;
+}
+
+.form-check-input:checked {
+  border-color: #05a2a7!important;
 }
