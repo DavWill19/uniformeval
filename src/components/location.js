@@ -29,49 +29,49 @@ function Location() {
 
     function thankYou() {
 
-axios.post("https://crewcoin.herokuapp.com/work", {
-        location: location,
-        manager: manager,
-        opsLeader: opsLeader,
-        notes: notes,
-        answers: answers,
-        wrongAnswers: wrongAnswers,
-        date: date
-    }, {
-        headers: {
-            Authorization: "none",
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            mode: "cors"
-        }
-    })
-    .then(res => {
-        if (res.data.success) {
-            console.log('success');
-            console.log(res.data.work);
-            setThanks(true);
+        axios.post("https://crewcoin.herokuapp.com/work", {
+            location: location,
+            manager: manager,
+            opsLeader: opsLeader,
+            notes: notes,
+            answers: answers,
+            wrongAnswers: wrongAnswers,
+            date: date
+        }, {
+            headers: {
+                Authorization: "none",
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                mode: "cors"
+            }
+        })
+            .then(res => {
+                if (res.data.success) {
+                    console.log('success');
+                    console.log(res.data.work);
+                    setThanks(true);
 
-        } else {
-            setErrorMessage("Something went wrong, please try again.");
-            setShowB(true);
-        }
-    })
-    .catch(err => {
-        setErrorMessage("Something went wrong, please try again.");
-        setShowB(true);
-        setTimeout(() => {
-            setShowB(false)
-        }, 5000);
-    });
+                } else {
+                    setErrorMessage("Something went wrong, please try again.");
+                    setShowB(true);
+                }
+            })
+            .catch(err => {
+                setErrorMessage("Something went wrong, please try again.");
+                setShowB(true);
+                setTimeout(() => {
+                    setShowB(false)
+                }, 5000);
+            });
 
     }
     // get checked input .nextSibling.innerText
     function getChecked() {
         let checked = document.querySelectorAll('input:checked');
         let checkedArray = Array.from(checked); // or let checkedArray = [...checked];
-        
-        let filteredRemoveTemp = checkedArray.filter((item) => { 
-        //   doesnt include the word Holding
+
+        let filteredRemoveTemp = checkedArray.filter((item) => {
+            //   doesnt include the word Holding
             return !item.nextSibling.innerText.includes('- Holding')
         });
 
@@ -147,9 +147,6 @@ axios.post("https://crewcoin.herokuapp.com/work", {
 
             {/* thank you toast */}
             <Modal onClick={() => { setModal(false) }} isOpen={modal} className="">
-                <ModalHeader toggle={() => { setModal(false) }}>
-                    <img src="../images/ecosureLogo.png" className="tiny mx-auto" alt="wendy" />
-                </ModalHeader>
                 <ModalBody>
                     <img src={image} className="mx-auto modalImage" alt="wendy" />
                 </ModalBody>
@@ -158,7 +155,7 @@ axios.post("https://crewcoin.herokuapp.com/work", {
             {/* homemade toast for error handling */}
             <div style={{ display: showB ? 'block' : 'none' }} className="animate__animated animate__fadeIn cardContainer">
                 <Card className="mx-auto" style={{ width: '18rem' }}>
-                    <img src="../images/ecosureLogo.png" className="smallest mx-auto mt-2" alt="wendy" />
+                    <img src="../images/wendyLogo.png" className="smallest mx-auto mt-2" alt="wendy" />
                     {errorMessage}
                 </Card>
             </div>
@@ -166,7 +163,6 @@ axios.post("https://crewcoin.herokuapp.com/work", {
             {/* thank you area */}
             <div style={{ display: thanks ? 'block' : 'none' }} className="animate__animated animate__fadeIn">
                 <Col className="mx-auto" xs="10" lg="6"><img style={{ width: hide && location ? '15%' : '30%' }} className="logo animate__animated animate__pulse" alt="wendy" src="../images/wendyLogo.png" /></Col>
-                <Col className="mx-auto" xs="10" lg="6"><img style={{ width: hide && location ? '40%' : '60%' }} className="logo" alt="ecosure" src="../images/ecosureLogo.png" /></Col>
                 <h1 className="display-3 mt-2 animate__animated animate__backInRight">Thank You!</h1>
                 <hr className="display-3" />
                 <p className="lead animate__animated animate__backInLeft">
@@ -179,8 +175,7 @@ axios.post("https://crewcoin.herokuapp.com/work", {
                 <div
                     className="text-center animate__animated animate__fadeIn">
                     <Col className="mx-auto" xs="10" lg="6"><img style={{ width: hide && location ? '15%' : '30%' }} className="logo animate__animated animate__pulse" alt="wendy" src="../images/wendyLogo.png" /></Col>
-                    <Col className="mx-auto" xs="10" lg="6"><img style={{ width: hide && location ? '40%' : '60%' }} className="logo" alt="ecosure" src="../images/ecosureLogo.png" /></Col>
-                    <h1 style={{ fontSize: hide && location ? '1.75em' : '2em' }} className="display-3 mt-2 animate__animated animate__backInRight">Critital Evaluation</h1>
+                    <h1 style={{ fontSize: hide && location ? '1.75em' : '2em' }} className="display-3 mt-2 animate__animated animate__backInRight">Uniform Evaluation</h1>
                     <hr className="display-3" />
                     <div className="lead animate__animated animate__backInLeft">
                         <Form style={{ display: hide && location ? 'none' : 'block' }} onSubmit={(e) => { e.preventDefault(); setHide(false) }}>
@@ -328,8 +323,8 @@ axios.post("https://crewcoin.herokuapp.com/work", {
                             <FormGroup check>
                                 <Input type="checkbox" />
                                 <p className='text-start'>
-                                    Sink area is not a source of hand re-contamination, is able to drain/function
-                                    properly, is stocked with antibacterial soap and paper towels.
+                                    Sink area is not a source of hand re-contamination & is able to drain/function
+                                    properly.
                                 </p>
                             </FormGroup>
                         </Col>
@@ -342,21 +337,7 @@ axios.post("https://crewcoin.herokuapp.com/work", {
                             <FormGroup check>
                                 <Input type="checkbox" />
                                 <p className='text-start'>
-                                    Sink area is not a source of hand re-contamination, is able to drain/function
-                                    properly, is stocked with antibacterial soap and paper towels.
-                                </p>
-                            </FormGroup>
-                        </Col>
-                    </Row>
-                    <hr className="display2 mt-2 mb-4" />
-                    <Row className='mx-auto'>
-                        {/* Center these columns */}
-
-                        <Col className='col-sm-12 col-md-6 mx-auto offset-md-2'>
-                            <FormGroup check>
-                                <Input type="checkbox" />
-                                <p className='text-start'>
-                                    Sink is stocked with antibacterial soap and paper towels
+                                    Employees wash hands when returning from dining areas, outside areas, and restrooms.
                                 </p>
                             </FormGroup>
                         </Col>
@@ -466,7 +447,7 @@ axios.post("https://crewcoin.herokuapp.com/work", {
                             <FormGroup check>
                                 <Input type="checkbox" />
                                 <p className='text-start'>
-                                    Handwashing sinks stocked with soap and paper towels
+                                    Handwashing water temp is above 100 degrees
                                 </p>
                             </FormGroup>
                         </Col>
@@ -479,7 +460,7 @@ axios.post("https://crewcoin.herokuapp.com/work", {
                             <FormGroup check>
                                 <Input type="checkbox" />
                                 <p className='text-start'>
-                                    Gloves must be worn over band aids or bandages
+                                    Gloves must be worn over band aids or bandages & Bandaids must be blue or bright in color
                                 </p>
                             </FormGroup>
                         </Col>
@@ -492,7 +473,7 @@ axios.post("https://crewcoin.herokuapp.com/work", {
                             <FormGroup check>
                                 <Input type="checkbox" />
                                 <p className='text-start'>
-                                    Bandaids must be blue or bright in color
+                                    Ice scoop is used to handle ice & when completed is stored in ice scoop holder
                                 </p>
                             </FormGroup>
                         </Col>
@@ -541,7 +522,7 @@ axios.post("https://crewcoin.herokuapp.com/work", {
                             <FormGroup check>
                                 <Input type="checkbox" />
                                 <p className='text-start'>
-                                    No eating, drinking, chewing gum, or tobacco use in food preparation areas
+                                    Employees remove apron prior to restroom use and trash handling
                                 </p>
                             </FormGroup>
                         </Col>
@@ -554,7 +535,7 @@ axios.post("https://crewcoin.herokuapp.com/work", {
                             <FormGroup check>
                                 <Input type="checkbox" />
                                 <p className='text-start'>
-                                    Employees only eating and drinking in designated areas away from food
+                                    Employees only eating and drinking in designated areas away from food / no chewing gum or tobacco use
                                 </p>
                             </FormGroup>
                         </Col>
@@ -1226,16 +1207,15 @@ axios.post("https://crewcoin.herokuapp.com/work", {
                     <Toast className='mx-auto' show={showA} onClose={() => setShowA(false)} delay={3000} autohide>
                         <Toast.Header className='mx-auto'>
                             <img src="holder.js/20x20?text=%20" className="rounded mx-auto" alt="" />
-                            <img src="../images/ecosureLogo.png" className="tiny mx-auto" alt="wendy" />
                         </Toast.Header>
                         <Toast.Body className='rounded' style={{ backgroundColor: '#999999', color: 'white', fontSize: '1.5em' }}
                         >{errorMessage}</Toast.Body>
                     </Toast>
                 </ToastContainer>
                 <Button disabled={disabled}
-                 onClick={() => {
-                    sendData();
-                }} style={{ display: hide && location ? 'block' : 'none' }} className="animate__animated animate__fadeIn mx-auto mb-5" color="primary">Submit</Button>
+                    onClick={() => {
+                        sendData();
+                    }} style={{ display: hide && location ? 'block' : 'none' }} className="animate__animated animate__fadeIn mx-auto mb-5" color="primary">Submit</Button>
             </div>
         </div>
     );
